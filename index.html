@@ -595,21 +595,26 @@
             updateDisplayInfo();
         }
 
-        function submitForm() {
-            const formData = {
-                name: document.getElementById('name').value,
-                visitCount: visitCount,
-                selectedSymptom: selectedSymptom,
-                irradiationsCount: irradiationsCount,
-                dates: [selectedFullDate],
-                message: document.getElementById('message').value
-            };
+function submitForm() {
+    const formData = {
+        name: document.getElementById('name').value.trim(),
+        visitCount: visitCount,
+        selectedSymptom: selectedSymptom && selectedSymptom.length > 0 ? selectedSymptom : null, // 空の選択肢をチェック
+        irradiationsCount: irradiationsCount,
+        dates: [selectedFullDate],
+        message: document.getElementById('message').value.trim()
+    };
 
-            // フォームデータのチェック
-            if (!formData.name ||!formData.selectedSymptom) {
-                alert('お名前・メニューすべてご記入ください。');
-                return;
-            }
+    // フォームデータのチェック
+    if (!formData.name) {
+        alert('お名前を入力してください。');
+        return;
+    }
+
+    if (!formData.selectedSymptom) {
+        alert('メニューを選択してください。');
+        return;
+    }
 
             // LINEトークにメッセージを送信
             liff.sendMessages([{
