@@ -17,7 +17,7 @@
             /* 画面中央に固定 */
             transform: translateY(-50%) translateX(13px);
             /* 中央配置と右ずらし */
-            background: #13ca5e;
+            background: #3971c0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -104,7 +104,7 @@
         }
 
         h1 {
-            background: linear-gradient(135deg, #13ca5e, #0fa958);
+            background: linear-gradient(135deg, #3971c0, #3971c0);
             color: white;
             padding: 20px;
             border-radius: 0 15px 0px 45px;
@@ -123,7 +123,7 @@
             margin-bottom: 10px;
             padding: 3px;
             font-weight: 600;
-            background-color: #13ca5e;
+            background-color: #3971c0;
             color: white;
             border-radius: 6px;
             font-size: 18px;
@@ -140,7 +140,7 @@
             margin-bottom: 10px;
             padding: 3px;
             font-weight: 600;
-            background-color: #13ca5e;
+            background-color: #3971c0;
             color: white;
             border-radius: 6px;
             font-size: 18px;
@@ -164,12 +164,12 @@
             align-items: center;
             justify-content: center;
             background: white;
-            color: #13ca5e;
+            color: #3971c0;
             font-weight: bold;
             font-size: 0.9em;
             border-radius: 4px;
             padding: 2px 6px;
-            border: 2px solid #13ca5e;
+            border: 2px solid #3971c0;
         }
 
         input[type="text"],
@@ -296,7 +296,7 @@
         }
 
         .calendar td.selected {
-            background-color: #13ca5e;
+            background-color: #3971c0;
             color: #fff;
         }
 
@@ -540,7 +540,7 @@
 
         .highlight-background {
             cursor: pointer;
-            background-color: #13ca5e;
+            background-color: #3971c0;
             padding: 10px;
             border-radius: 6px;
             font-size: 18px;
@@ -603,7 +603,7 @@
 
         input:focus,
         textarea:focus {
-            border-color: #13ca5e;
+            border-color: #3971c0;
             outline: none;
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
         }
@@ -612,7 +612,7 @@
             padding: 12px;
             border: none;
             border-radius: 6px;
-            background-color: #13ca5e;
+            background-color: #3971c0;
             color: #000000;
             font-size: 16px;
             cursor: pointer;
@@ -628,11 +628,11 @@
             width: 100%;
             padding: 15px;
             font-size: 18px;
-            background-color: #dc3545;
+            background-color: #3971c0;
         }
 
         .submit-button:hover {
-            background-color: #c82333;
+            background-color: #3971c0;
         }
 
         @media (max-width: 768px) {
@@ -681,7 +681,7 @@
             left: 50%;
             transform: translate(-50%, -10px);
             /* Y方向に上げる */
-            background-color: #13ca5e;
+            background-color: #3971c0;
             color: #fff;
             padding: 3px 12px;
             /* ボックスのパディングを縮小 */
@@ -714,13 +714,13 @@
             text-align: center;
             font-size: 14px;
             margin-bottom: 10px;
-            background: #4a90e2;
+            background: #3971c0;
             border-radius: 5px;
             transition: background 0.3s;
         }
 
         .sidebar a:hover {
-            background: #357ac4;
+            background: #3971c0;
         }
 
         /* スクロール用のセクション */
@@ -887,6 +887,18 @@
             if (savedPhone) document.getElementById('phone').value = savedPhone;
         });
 
+        const savedGender = localStorage.getItem('selectedGender');
+if (savedGender) {
+    if (savedGender === '初診') {
+        document.getElementById('firstVisit').classList.add('active');
+        visitCount = '初診'; // ←これ追加
+    }
+    if (savedGender === '2回目以降') {
+        document.getElementById('repeatVisit').classList.add('active');
+        visitCount = '2回目以降'; // ←これ追加
+    }
+}
+
         // スムーズスクロール
         document.querySelectorAll('.side-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -904,28 +916,28 @@
 
         function updateDisplayInfo() {
             const name = document.getElementById('name').value;
-            const visitCountText = visitCount ? `<span style="color:#13ca5e;"><strong>【ご来店回数】</strong></span><br>・${visitCount}` : '・来店回数が未選択です';
+            const visitCountText = visitCount ? `<span style="color:#3971c0;"><strong>【ご来店回数】</strong></span><br>・${visitCount}` : '・来店回数が未選択です';
 
             const selectedSymptomText = selectedSymptom.length > 0
-                ? `<span style="color:#13ca5e;"><strong>【メニュー】</strong></span><br>・${selectedSymptom.join('<br>')}`
+                ? `<span style="color:#3971c0;"><strong>【メニュー】</strong></span><br>・${selectedSymptom.join('<br>')}`
                 : '・メニューが未選択です';
 
             const irradiationsText = irradiationsCount
-                ? `<span style="color:#13ca5e;"><strong>【オプション】</strong></span><br>・${irradiationsCount.split(', ').join('<br>・')}`
+                ? `<span style="color:#3971c0;"><strong>【オプション】</strong></span><br>・${irradiationsCount.split(', ').join('<br>・')}`
                 : '・オプション無し';
 
             let totalMinutes = selectedMenuTime + selectedirradiationsTime + selectedVisitTime;
             let hours = Math.floor(totalMinutes / 60);
             let minutes = totalMinutes % 60;
-            let totalTimeText = `<span style="color:#13ca5e;"><strong>【所要時間】</strong></span><br>・${hours > 0 ? hours + '時間' : ''}${minutes}分`;
+            let totalTimeText = `<span style="color:#3971c0;"><strong>【所要時間】</strong></span><br>・${hours > 0 ? hours + '時間' : ''}${minutes}分`;
 
-            const totalAmountText = `<span style="color:#13ca5e;"><strong>【合計金額】</strong></span><br>・¥${menuPrice + optionsPrice}`;
-            const selectedDateText = selectedFullDate ? `<span style="color:#13ca5e;"><strong>【希望日時】</strong></span><br>・${selectedFullDate}` : '・日時が未選択です';
+            const totalAmountText = `<span style="color:#3971c0;"><strong>【合計金額】</strong></span><br>・¥${menuPrice + optionsPrice}`;
+            const selectedDateText = selectedFullDate ? `<span style="color:#3971c0;"><strong>【希望日時】</strong></span><br>・${selectedFullDate}` : '・日時が未選択です';
 
             // 修正ボタン付きのHTMLを作成
             document.getElementById('displayInfo').innerHTML = `
         <div class="info-row">
-            <p><span style="color:#13ca5e;"><strong>【お名前】</strong></span><br>・${name}</p>
+            <p><span style="color:#3971c0;"><strong>【お名前】</strong></span><br>・${name}</p>
             <button class="edit-button" onclick="scrollToElement('name')">修正する</button>
         </div>
         <hr>
@@ -1106,19 +1118,22 @@
         }
 
         function selectVisit(element) {
-            document.getElementById('firstVisit').classList.remove('active');
-            document.getElementById('repeatVisit').classList.remove('active');
-            element.classList.add('active');
-            visitCount = element.innerText;
+    // 選択された性別をリセット
+    document.getElementById('firstVisit').classList.remove('active');
+    document.getElementById('repeatVisit').classList.remove('active');
 
-            // 選択された訪問回数に対応する時間を取得
-            selectedVisitTime = visitTimes[visitCount];
+    // 押されたボタンをアクティブに
+    element.classList.add('active');
 
-            console.log('選択された訪問回数の時間:', selectedVisitTime);
+    // 選択された性別を取得して保存
+    visitCount = element.innerText;
+    localStorage.setItem('selectedGender', visitCount);
 
-            // カレンダーを更新するために取得する日付を渡す
-            fetchAvailability(currentDate);
-        }
+    console.log('選択された性別:', visitCount);
+
+    // もしカレンダーとか更新が必要ならここで呼ぶ（そのまま）
+    fetchAvailability(currentDate);
+}
 
         function selectDate(cell) {
             // "unavailable" クラスが付いている場合はクリックを無効化
