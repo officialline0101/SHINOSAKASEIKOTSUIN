@@ -1117,21 +1117,24 @@ if (savedGender) {
             updateDisplayInfo(); // 表示を更新
         }
 
-        function selectVisit(element) {
-    // 選択された性別をリセット
+function selectVisit(element) {
+    // 選択された訪問回数のボタンをリセット
     document.getElementById('firstVisit').classList.remove('active');
     document.getElementById('repeatVisit').classList.remove('active');
 
     // 押されたボタンをアクティブに
     element.classList.add('active');
 
-    // 選択された性別を取得して保存
+    // 選択された訪問回数を取得して保存
     visitCount = element.innerText;
     localStorage.setItem('selectedGender', visitCount);
 
-    console.log('選択された性別:', visitCount);
+    console.log('選択された訪問回数:', visitCount);
 
-    // もしカレンダーとか更新が必要ならここで呼ぶ（そのまま）
+    // 選択された訪問回数に対応する時間を取得
+    selectedVisitTime = visitTimes[visitCount];
+
+    // カレンダーなどの更新
     fetchAvailability(currentDate);
 }
 
