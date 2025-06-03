@@ -878,27 +878,6 @@
             localStorage.setItem(id, value);
         }
 
-        // ページが読み込まれたときに前回の入力内容を復元
-        document.addEventListener('DOMContentLoaded', function () {
-            const savedName = localStorage.getItem('name');
-            const savedPhone = localStorage.getItem('phone');
-
-            if (savedName) document.getElementById('name').value = savedName;
-            if (savedPhone) document.getElementById('phone').value = savedPhone;
-        });
-
-        const savedGender = localStorage.getItem('selectedGender');
-if (savedGender) {
-    if (savedGender === '初診') {
-        document.getElementById('firstVisit').classList.add('active');
-        visitCount = '初診'; // ←これ追加
-    }
-    if (savedGender === '2回目以降') {
-        document.getElementById('repeatVisit').classList.add('active');
-        visitCount = '2回目以降'; // ←これ追加
-    }
-}
-
         // スムーズスクロール
         document.querySelectorAll('.side-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
