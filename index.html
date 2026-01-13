@@ -15,7 +15,7 @@
             /* さらに右へ */
             top: 80%;
             /* 画面中央に固定 */
-            transform: translateY(-50%) translateX(13px);
+            transform: translateY(-50%) translateX(16px);
             /* 中央配置と右ずらし */
             background: #3971c0;
             display: flex;
@@ -96,7 +96,7 @@
             background-color: #fdfdfd;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 90%;
+            width: 96%;
             max-width: 500px;
             padding: 25px;
             box-sizing: border-box;
@@ -763,6 +763,7 @@
             <button type="button" onclick="selectSymptom(this, 'treatment7')" data-price="15000">伝統鍼灸</button>
             <button type="button" onclick="selectSymptom(this, 'treatment8')" data-price="15000">美容鍼</button>
             <button type="button" onclick="selectSymptom(this, 'treatment9')" data-price="15000">血流改善プログラム</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment10')" data-price="15000">美足整体</button>
         </div>
 
         <div class="label">希望日時<span class="required">必須</span></div>
@@ -867,6 +868,7 @@
             '伝統鍼灸': 20,
             '美容鍼': 20,
             '血流改善プログラム': 20,
+            '美足整体': 20
         };
 
 
@@ -1037,6 +1039,8 @@
                 treatmentText.innerHTML = `<div style="text-align: center;"><strong>【美容鍼】施術時間：15分</strong></div>`;
             } else if (treatmentId === 'treatment9') {
                 treatmentText.innerHTML = `<div style="text-align: center;"><strong>【血流改善プログラム】施術時間：15分</strong></div>`;
+            } else if (treatmentId === 'treatment10') {
+                treatmentText.innerHTML = `<div style="text-align: center;"><strong>【美足整体】施術時間：15分</strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
             }
@@ -1230,20 +1234,20 @@ function selectVisit(element) {
             const calendar = document.getElementById('calendar1');
             const table = calendar.querySelector('table tbody');
 
-            const times = [
-                '09:00', '09:15', '09:30', '09:45',
-                '10:00', '10:15', '10:30', '10:45',
-                '11:00', '11:15', '11:30', '11:45',
-                '12:00', '12:15', '12:30', '12:45',
-                '13:00', '13:15', '13:30', '13:45',
-                '14:00', '14:15', '14:30', '14:45',
-                '15:00', '15:15', '15:30', '15:45',
-                '16:00', '16:15', '16:30', '16:45',
-                '17:00', '17:15', '17:30', '17:45',
-                '18:00', '18:15', '18:30', '18:45',
-                '19:00', '19:15', '19:30', '19:45',
-                '20:00'
-            ];
+const times = [
+    '09:00', '09:20', '09:40',
+    '10:00', '10:20', '10:40',
+    '11:00', '11:20', '11:40',
+    '12:00', '12:20', '12:40',
+    '13:00', '13:20', '13:40',
+    '14:00', '14:20', '14:40',
+    '15:00', '15:20', '15:40',
+    '16:00', '16:20', '16:40',
+    '17:00', '17:20', '17:40',
+    '18:00', '18:20', '18:40',
+    '19:00', '19:20', '19:40',
+    '20:00'
+];
 
             if (table.rows.length === 0) {
                 for (const time of times) {
@@ -1401,7 +1405,7 @@ function selectVisit(element) {
 
                 // ×と×の間のセル数が3未満の場合、その間のセルを×にする部分の後に以下を追加
                 for (let i = 0; i < 7; i++) {
-                    const twentyOClockRow = times.indexOf('19:45');
+                    const twentyOClockRow = times.indexOf('19:40');
                     const twentyOneOClockRow = times.indexOf('20:00');
 
                     for (let j = twentyOClockRow; j < times.length; j++) {
