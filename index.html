@@ -1319,7 +1319,7 @@ const times = [
                     // 月・火・木・金は20:00以降、水・土は12:30以降を営業時間外とする条件
                     const dayOfWeek = slotStart.getDay();
                     const eveningLimitWeekdays = new Date(day);  // 新しいDateオブジェクトを使用
-                    eveningLimitWeekdays.setHours(20, 0); // 月・火・木・金の20:00
+                    eveningLimitWeekdays.setHours(20, 30); // 月・火・木・金の20:00
                     const afternoonLimitWedSat = new Date(day);  // 新しいDateオブジェクトを使用
                     afternoonLimitWedSat.setHours(12, 30); // 水・土の12:30
 
